@@ -1,0 +1,16 @@
+    - name: Add GPG apt Key
+      apt_key:
+        url: "https://apt.fury.io/drud/gpg.key"
+        state: present
+
+    - name: Add apt repository
+      apt_repository:
+        repo: "deb https://apt.fury.io/drud/ * *"
+        state: present
+        filename: ddev
+
+    - name: Install package
+      apt:
+        name: ddev
+        state: latest
+        update_cache: true
